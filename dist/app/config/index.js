@@ -9,6 +9,7 @@ dotenv_1.default.config({
     path: path_1.default.join(process.cwd(), ".env"),
 });
 exports.default = {
+    NODE_ENV: process.env.NODE_ENV,
     database_uri: process.env.DATABASE_URL,
     port: process.env.PORT,
     refresh_token_secret: process.env.REFRESH_TOKEN_SECRET,
