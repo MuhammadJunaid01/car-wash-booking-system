@@ -12,7 +12,7 @@
     "format": "prettier --ignore-path .gitignore --write \"./src/**/*.+(js|ts|json)\"",
     "commit": "eslint src --fix && tsc && git add . && git-cz && git push",
     "prepare": "husky install",
-    "sync": "git pull origin develop && git push && yarn"
+    "sync": "git pull origin main && git push && yarn"
   },
   "config": {
     "commitizen": {
