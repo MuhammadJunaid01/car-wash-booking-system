@@ -23,4 +23,5 @@ router.put(
   validateRequest(updatedServiceValidation),
   ServiceControllers.updateService
 );
+router.delete("/:id", ServiceControllers.deleteService);
 export { router as serviceRouter };

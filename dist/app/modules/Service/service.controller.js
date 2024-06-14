@@ -51,9 +51,19 @@ const updateService = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
         statusCode: http_status_1.default.OK,
     });
 }));
+const deleteService = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const service = yield service_service_1.ServiceServices.deleteServiceIntoDb(id);
+    (0, sendResponse_1.default)(res, {
+        message: "Service deleted successfully",
+        data: service,
+        statusCode: http_status_1.default.OK,
+    });
+}));
 exports.ServiceControllers = {
     createService,
     getSingleService,
     getServices,
     updateService,
+    deleteService,
 };

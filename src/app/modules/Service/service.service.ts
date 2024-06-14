@@ -1,3 +1,5 @@
+import httpStatus from "http-status";
+import { AppError } from "../../errors/AppError";
 import { IService } from "./service.interface";
 import Service from "./service.model";
 
@@ -20,9 +22,30 @@ const updateServiceIntoDB = async (id: string, payload: Partial<IService>) => {
   });
   return updatedServiceData;
 };
+const deleteServiceIntoDb = async (id: string) => {
+  const checkServiceAlreadyDeleted = await Service.findOne({
+    _id: id,
+  });
+  console.log(checkServiceAlreadyDeleted);
+  if (checkServiceAlreadyDeleted?.isDeleted) {
+    throw new AppError(
+      "service not found or already deleted service",
+      httpStatus.NOT_FOUND
+    );
+  }
+  const updatedServiceData = await Service.findByIdAndUpdate(
+    id,
+    { isDeleted: true },
+    {
+      new: true,
+    }
+  );
+  return updatedServiceData;
+};
 export const ServiceServices = {
   createServiceIntoDB,
   getSingleServiceFromDB,
   getServicesFromDB,
   updateServiceIntoDB,
+  deleteServiceIntoDb,
 };
