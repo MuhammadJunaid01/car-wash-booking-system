@@ -16,3 +16,4 @@ router.get("/", service_controller_1.ServiceControllers.getServices);
 router.get("/:id", service_controller_1.ServiceControllers.getSingleService);
 router.post("/", (0, auth_middleware_1.default)(user_constant_1.USER_ROLE.Admin), (0, requestValidation_1.validateRequest)(service_validation_1.serviceValidation), service_controller_1.ServiceControllers.createService);
 router.put("/:id", (0, auth_middleware_1.default)(user_constant_1.USER_ROLE.Admin), (0, requestValidation_1.validateRequest)(service_validation_1.updatedServiceValidation), service_controller_1.ServiceControllers.updateService);
+router.delete("/:id", service_controller_1.ServiceControllers.deleteService);
