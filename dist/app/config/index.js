@@ -14,4 +14,6 @@ exports.default = {
     port: process.env.PORT,
     refresh_token_secret: process.env.REFRESH_TOKEN_SECRET,
     access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+    saltRounds: process.env.SALT_ROUNDS,
+    expiresIn: process.env.ACCESS_TOKEN_EXPIRES,
 };
