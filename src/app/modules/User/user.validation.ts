@@ -1,7 +1,6 @@
-import { z, ZodSchema } from "zod";
-import { ILoginUser, IUser } from "./user.interface";
+import { z } from "zod";
 
-const IUserZodSchema: ZodSchema<IUser> = z.object({
+const IUserZodSchema = z.object({
   name: z
     .string({
       required_error: "Name is required",
@@ -27,7 +26,7 @@ const IUserZodSchema: ZodSchema<IUser> = z.object({
     required_error: "Address is required",
   }),
 });
-const loginSchema: ZodSchema<ILoginUser> = z.object({
+const loginSchema = z.object({
   email: z
     .string({
       required_error: "Email is required",

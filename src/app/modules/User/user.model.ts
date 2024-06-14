@@ -1,15 +1,14 @@
 import { IUser } from "./user.interface";
 import { CallbackError, Document, Model, Schema, model } from "mongoose";
-interface TUser extends IUser, Document {}
+interface TUserDocument extends IUser, Document {}
 import bcrypt from "bcrypt";
 import config from "../../config";
 function validateEmail(email: string): boolean {
-  // Example custom validation logic (can be more robust depending on requirements)
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
 
-const userSchema: Schema<TUser> = new Schema(
+const userSchema: Schema<TUserDocument> = new Schema(
   {
     name: {
       type: String,
@@ -65,5 +64,5 @@ userSchema.pre("save", async function (next) {
   }
   next();
 });
-const User: Model<TUser> = model<TUser>("User", userSchema);
+const User: Model<TUserDocument> = model<TUserDocument>("User", userSchema);
 export default User;
