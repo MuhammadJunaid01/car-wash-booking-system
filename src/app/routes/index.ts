@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { postRouter } from "../modules/posts/post.route";
+import { userRouter } from "../modules/User/user.route";
 
 const router = Router();
-const modules = [{ path: "/post", route: postRouter }];
+const modules = [{ path: "/auth", route: userRouter }];
 modules.forEach(({ path, route }) => router.use(path, route));
 export default router;

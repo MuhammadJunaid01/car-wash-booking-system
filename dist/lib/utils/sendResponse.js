@@ -13,6 +13,6 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sendResponse = (res, data) => {
     const { statusCode } = data, rest = __rest(data, ["statusCode"]);
-    return res.status(statusCode).json(Object.assign({}, rest));
+    return res.status(statusCode).json(Object.assign(Object.assign({}, rest), { success: true }));
 };
 exports.default = sendResponse;

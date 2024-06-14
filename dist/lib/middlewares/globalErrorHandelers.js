@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const utils_1 = require("../utils");
 const config_1 = __importDefault(require("../../app/config"));
 const zod_1 = require("zod");
 const handleZodError_1 = __importDefault(require("../../app/errors/handleZodError"));
@@ -21,6 +20,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const handleMongooseValidationError_1 = __importDefault(require("../../app/errors/handleMongooseValidationError"));
 const handleMongooseCatsError_1 = __importDefault(require("../../app/errors/handleMongooseCatsError"));
 const handleMongooseDupKeyError_1 = __importDefault(require("../../app/errors/handleMongooseDupKeyError"));
+const AppError_1 = require("../../app/errors/AppError");
 const globalErrorHandler = (error, req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     let statusCode = error.statusCode || 500;
     let message = error.message || "Internal server error";
@@ -50,7 +50,7 @@ const globalErrorHandler = (error, req, res, next) => __awaiter(void 0, void 0, 
         message = customizedError.message;
         errorSources = customizedError.errorSources;
     }
-    else if (error instanceof utils_1.AppError) {
+    else if (error instanceof AppError_1.AppError) {
         statusCode = error.statusCode;
         message = error.message;
         errorSources = [{ path: "", message: error.message }];

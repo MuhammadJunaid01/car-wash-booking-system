@@ -1,7 +1,6 @@
 /* eslint-disable */
 
 import { NextFunction, Request, Response } from "express";
-import { AppError } from "../utils";
 import { TErrorSouce } from "../../app/interfaces";
 import config from "../../app/config";
 import { ZodError } from "zod";
@@ -10,6 +9,7 @@ import mongoose from "mongoose";
 import handleMongooseValidationError from "../../app/errors/handleMongooseValidationError";
 import handleMongooseCatsError from "../../app/errors/handleMongooseCatsError";
 import handleMongooseDupKeyError from "../../app/errors/handleMongooseDupKeyError";
+import { AppError } from "../../app/errors/AppError";
 
 const globalErrorHandler = async (
   error: AppError,
