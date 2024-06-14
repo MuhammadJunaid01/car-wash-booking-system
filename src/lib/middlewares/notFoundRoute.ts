@@ -7,5 +7,7 @@ export const handleNotFound = (
   res: Response,
   next: NextFunction
 ) => {
-  res.status(404).json({ message: "Route not found" });
+  const url = `http://localhost:5000${req.originalUrl}`;
+  // console.log(req);
+  res.status(404).json({ message: "Route not found", url });
 };

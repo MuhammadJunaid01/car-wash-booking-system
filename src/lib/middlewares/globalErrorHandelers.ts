@@ -10,6 +10,7 @@ import handleMongooseValidationError from "../../app/errors/handleMongooseValida
 import handleMongooseCatsError from "../../app/errors/handleMongooseCatsError";
 import handleMongooseDupKeyError from "../../app/errors/handleMongooseDupKeyError";
 import { AppError } from "../../app/errors/AppError";
+import httpStatus from "http-status";
 
 const globalErrorHandler = async (
   error: AppError,
@@ -42,11 +43,16 @@ const globalErrorHandler = async (
     statusCode = customizedError.statusCode;
     message = customizedError.message;
     errorSources = customizedError.errorSources;
+  } else if (error.name == "TokenExpiredError") {
+    statusCode = 403;
+    message = "Token has expired";
+    errorSources = [{ message: "Token has expired", path: "" }];
   } else if (error instanceof AppError) {
     statusCode = error.statusCode;
     message = error.message;
     errorSources = [{ path: "", message: error.message }];
   }
+
   res.status(statusCode).json({
     success: false,
     message,

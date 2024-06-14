@@ -3,6 +3,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleNotFound = void 0;
 const handleNotFound = (req, res, next) => {
-    res.status(404).json({ message: "Route not found" });
+    const url = `http://localhost:5000${req.originalUrl}`;
+    // console.log(req);
+    res.status(404).json({ message: "Route not found", url });
 };
 exports.handleNotFound = handleNotFound;

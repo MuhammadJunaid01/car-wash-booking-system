@@ -50,6 +50,11 @@ const globalErrorHandler = (error, req, res, next) => __awaiter(void 0, void 0, 
         message = customizedError.message;
         errorSources = customizedError.errorSources;
     }
+    else if (error.name == "TokenExpiredError") {
+        statusCode = 403;
+        message = "Token has expired";
+        errorSources = [{ message: "Token has expired", path: "" }];
+    }
     else if (error instanceof AppError_1.AppError) {
         statusCode = error.statusCode;
         message = error.message;
