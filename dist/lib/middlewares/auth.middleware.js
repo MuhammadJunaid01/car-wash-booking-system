@@ -30,7 +30,7 @@ const authGuard = (...roles) => {
             throw new AppError_1.AppError(" you are not authorized !@W", http_status_1.default.UNAUTHORIZED);
         }
         const { userId, role } = decoded;
-        if (roles && !roles.includes(role)) {
+        if (roles && roles.length > 0 && !roles.includes(role)) {
             throw new AppError_1.AppError(" you are not access this resources", http_status_1.default.UNAUTHORIZED);
         }
         const isUserExist = yield user_model_1.default.findOne({ _id: userId });

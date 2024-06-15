@@ -21,7 +21,7 @@ const slotSchema = new mongoose_1.Schema({
     },
     isBooked: {
         type: String,
-        enum: ["available", "canceled"],
+        enum: ["available", "canceled", "booked"],
         default: "available",
     },
 }, { timestamps: true });
