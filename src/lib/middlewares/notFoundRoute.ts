@@ -9,5 +9,5 @@ export const handleNotFound = (
 ) => {
   const url = `http://localhost:5000${req.originalUrl}`;
   // console.log(req);
-  res.status(404).json({ message: "Route not found", url });
+  res.status(404).json({ message: "Not Found", url });
 };

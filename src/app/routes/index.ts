@@ -9,7 +9,7 @@ const modules = [
   { path: "/auth", route: userRouter },
   { path: "/services", route: serviceRouter },
   { path: "/slots", route: slotRouter },
-  { path: "/bookings", route: bookingRouter },
+  { path: "", route: bookingRouter },
 ];
 modules.forEach(({ path, route }) => router.use(path, route));
 export default router;

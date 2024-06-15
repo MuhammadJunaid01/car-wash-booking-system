@@ -23,8 +23,10 @@ const getSingleService = catchAsync(async (req: Request, res: Response) => {
 });
 const getServices = catchAsync(async (req: Request, res: Response) => {
   const service = await ServiceServices.getServicesFromDB();
+  const message =
+    service.length > 0 ? "Services retrieved successfully" : "No Data Found";
   sendResponse(res, {
-    message: "Services retrieved successfully",
+    message,
     data: service,
     statusCode: httpStatus.OK,
   });

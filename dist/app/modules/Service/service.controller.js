@@ -36,8 +36,9 @@ const getSingleService = (0, catchAsync_1.default)((req, res) => __awaiter(void 
 }));
 const getServices = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const service = yield service_service_1.ServiceServices.getServicesFromDB();
+    const message = service.length > 0 ? "Services retrieved successfully" : "No Data Found";
     (0, sendResponse_1.default)(res, {
-        message: "Services retrieved successfully",
+        message,
         data: service,
         statusCode: http_status_1.default.OK,
     });

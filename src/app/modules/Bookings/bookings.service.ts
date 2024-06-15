@@ -75,7 +75,16 @@ const getAllSlotBookingsFromDB = async () => {
 
   return response;
 };
+const getMyBookingsFromDB = async (userId: string) => {
+  const response = await SlotBooking.find({ customer: userId })
+    .populate("service")
+    .populate("slot")
+    .populate("customer");
+
+  return response;
+};
 export const BookingServices = {
   createBookingIntoDB,
   getAllSlotBookingsFromDB,
+  getMyBookingsFromDB,
 };

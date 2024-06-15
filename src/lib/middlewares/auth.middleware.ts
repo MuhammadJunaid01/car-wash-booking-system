@@ -20,16 +20,17 @@ const authGuard = (...roles: UserRole[]) => {
         token,
         config.access_token_secret as string
       ) as JwtPayload;
+
       if (!decoded) {
         throw new AppError(
-          " you are not authorized !@W",
+          "You have no access to this route",
           httpStatus.UNAUTHORIZED
         );
       }
       const { userId, role } = decoded;
       if (roles && roles.length > 0 && !roles.includes(role)) {
         throw new AppError(
-          " you are not access this resources",
+          "You have no access to this route",
           httpStatus.UNAUTHORIZED
         );
       }

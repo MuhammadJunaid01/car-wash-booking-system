@@ -27,11 +27,11 @@ const authGuard = (...roles) => {
         const token = authorizationHeader.split(" ")[1];
         const decoded = jsonwebtoken_1.default.verify(token, config_1.default.access_token_secret);
         if (!decoded) {
-            throw new AppError_1.AppError(" you are not authorized !@W", http_status_1.default.UNAUTHORIZED);
+            throw new AppError_1.AppError("You have no access to this route", http_status_1.default.UNAUTHORIZED);
         }
         const { userId, role } = decoded;
         if (roles && roles.length > 0 && !roles.includes(role)) {
-            throw new AppError_1.AppError(" you are not access this resources", http_status_1.default.UNAUTHORIZED);
+            throw new AppError_1.AppError("You have no access to this route", http_status_1.default.UNAUTHORIZED);
         }
         const isUserExist = yield user_model_1.default.findOne({ _id: userId });
         if (!isUserExist) {

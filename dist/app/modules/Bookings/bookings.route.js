@@ -12,5 +12,6 @@ const bookings_controller_1 = require("./bookings.controller");
 const user_constant_1 = require("../User/user.constant");
 const router = (0, express_1.Router)();
 exports.bookingRouter = router;
-router.get("/", (0, auth_middleware_1.default)(user_constant_1.USER_ROLE.Admin), bookings_controller_1.BookingControllers.getAllSlotBookings);
-router.post("/", (0, auth_middleware_1.default)(user_constant_1.USER_ROLE.User), (0, requestValidation_1.validateRequest)(bookings_validation_1.slotBookingValidation), bookings_controller_1.BookingControllers.createSlotBooking);
+router.get("/bookings", (0, auth_middleware_1.default)(user_constant_1.USER_ROLE.Admin), bookings_controller_1.BookingControllers.getAllSlotBookings);
+router.get("/my-booking", (0, auth_middleware_1.default)(user_constant_1.USER_ROLE.User), bookings_controller_1.BookingControllers.getMyBookings);
+router.post("/bookings", (0, auth_middleware_1.default)(user_constant_1.USER_ROLE.User), (0, requestValidation_1.validateRequest)(bookings_validation_1.slotBookingValidation), bookings_controller_1.BookingControllers.createSlotBooking);
