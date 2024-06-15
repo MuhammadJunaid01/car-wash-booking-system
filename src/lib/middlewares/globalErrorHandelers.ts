@@ -2,7 +2,6 @@
 
 import { NextFunction, Request, Response } from "express";
 import { TErrorSouce } from "../../app/interfaces";
-import config from "../../app/config";
 import { ZodError } from "zod";
 import handleZodError from "../../app/errors/handleZodError";
 import mongoose from "mongoose";
