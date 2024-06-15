@@ -21,14 +21,27 @@ const createSlotBooking = catchAsync(
 const getAllSlotBookings = catchAsync(
   async (req: CustomRequest, res: Response) => {
     const data = await BookingServices.getAllSlotBookingsFromDB();
+    const message =
+      data.length > 0 ? "All bookings retrieved successfully" : "No Data Found";
     sendResponse(res, {
-      message: "All bookings retrieved successfully",
+      message,
       statusCode: httpStatus.OK,
       data,
     });
   }
 );
+const getMyBookings = catchAsync(async (req: CustomRequest, res: Response) => {
+  const data = await BookingServices.getMyBookingsFromDB(req.user as string);
+  const message =
+    data.length > 0 ? "User bookings retrieved successfully" : "No Data Found";
+  sendResponse(res, {
+    message,
+    statusCode: httpStatus.OK,
+    data,
+  });
+});
 export const BookingControllers = {
   createSlotBooking,
   getAllSlotBookings,
+  getMyBookings,
 };

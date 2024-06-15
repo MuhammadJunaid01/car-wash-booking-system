@@ -7,12 +7,17 @@ import { USER_ROLE } from "../User/user.constant";
 
 const router = Router();
 router.get(
-  "/",
+  "/bookings",
   authGuard(USER_ROLE.Admin),
   BookingControllers.getAllSlotBookings
 );
+router.get(
+  "/my-booking",
+  authGuard(USER_ROLE.User),
+  BookingControllers.getMyBookings
+);
 router.post(
-  "/",
+  "/bookings",
   authGuard(USER_ROLE.User),
   validateRequest(slotBookingValidation),
   BookingControllers.createSlotBooking

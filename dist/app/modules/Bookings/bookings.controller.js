@@ -27,8 +27,18 @@ const createSlotBooking = (0, catchAsync_1.default)((req, res) => __awaiter(void
 }));
 const getAllSlotBookings = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield bookings_service_1.BookingServices.getAllSlotBookingsFromDB();
+    const message = data.length > 0 ? "All bookings retrieved successfully" : "No Data Found";
     (0, sendResponse_1.default)(res, {
-        message: "All bookings retrieved successfully",
+        message,
+        statusCode: http_status_1.default.OK,
+        data,
+    });
+}));
+const getMyBookings = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const data = yield bookings_service_1.BookingServices.getMyBookingsFromDB(req.user);
+    const message = data.length > 0 ? "User bookings retrieved successfully" : "No Data Found";
+    (0, sendResponse_1.default)(res, {
+        message,
         statusCode: http_status_1.default.OK,
         data,
     });
@@ -36,4 +46,5 @@ const getAllSlotBookings = (0, catchAsync_1.default)((req, res) => __awaiter(voi
 exports.BookingControllers = {
     createSlotBooking,
     getAllSlotBookings,
+    getMyBookings,
 };
