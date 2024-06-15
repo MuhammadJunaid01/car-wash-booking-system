@@ -39,7 +39,6 @@ const deleteServiceIntoDb = (id) => __awaiter(void 0, void 0, void 0, function* 
     const checkServiceAlreadyDeleted = yield service_model_1.default.findOne({
         _id: id,
     });
-    console.log(checkServiceAlreadyDeleted);
     if (checkServiceAlreadyDeleted === null || checkServiceAlreadyDeleted === void 0 ? void 0 : checkServiceAlreadyDeleted.isDeleted) {
         throw new AppError_1.AppError("service not found or already deleted service", http_status_1.default.NOT_FOUND);
     }

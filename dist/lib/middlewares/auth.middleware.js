@@ -37,6 +37,7 @@ const authGuard = (...roles) => {
         if (!isUserExist) {
             throw new AppError_1.AppError("user not found", http_status_1.default.NOT_FOUND);
         }
+        req.user = userId;
         next();
     }));
 };

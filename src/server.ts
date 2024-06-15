@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import mongoose from "mongoose";
 import config from "./app/config";
 import app from "./app";
@@ -12,7 +14,6 @@ const main = async () => {
       );
     });
   } catch (error) {
-    console.log(error);
     process.exit(1);
   }
 };

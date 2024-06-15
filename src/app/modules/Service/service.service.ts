@@ -26,7 +26,6 @@ const deleteServiceIntoDb = async (id: string) => {
   const checkServiceAlreadyDeleted = await Service.findOne({
     _id: id,
   });
-  console.log(checkServiceAlreadyDeleted);
   if (checkServiceAlreadyDeleted?.isDeleted) {
     throw new AppError(
       "service not found or already deleted service",
