@@ -2,7 +2,6 @@ import httpStatus from "http-status";
 import { AppError } from "../../errors/AppError";
 import { ILoginUser, IUser } from "./user.interface";
 import User from "./user.model";
-import crypto from "crypto";
 import createToken from "../../../lib/utils/createToken";
 import config from "../../config";
 const signUpUserIntoDB = async (payload: IUser) => {
@@ -18,10 +17,8 @@ const signUpUserIntoDB = async (payload: IUser) => {
   throw new AppError(`this user already exist.`, httpStatus.CONFLICT);
 };
 const loginUser = async (payload: ILoginUser) => {
-  console.log(crypto.randomBytes(80).toString("hex").toUpperCase());
   const user = await User.findOne({ email: payload.email });
   if (user) {
-    // console.log(user.id);
     const token = createToken({
       userId: user.id,
       role: user.role,

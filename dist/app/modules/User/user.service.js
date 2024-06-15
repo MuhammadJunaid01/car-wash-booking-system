@@ -27,7 +27,6 @@ exports.UserServices = void 0;
 const http_status_1 = __importDefault(require("http-status"));
 const AppError_1 = require("../../errors/AppError");
 const user_model_1 = __importDefault(require("./user.model"));
-const crypto_1 = __importDefault(require("crypto"));
 const createToken_1 = __importDefault(require("../../../lib/utils/createToken"));
 const config_1 = __importDefault(require("../../config"));
 const signUpUserIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
@@ -42,10 +41,8 @@ const signUpUserIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function
     throw new AppError_1.AppError(`this user already exist.`, http_status_1.default.CONFLICT);
 });
 const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(crypto_1.default.randomBytes(80).toString("hex").toUpperCase());
     const user = yield user_model_1.default.findOne({ email: payload.email });
     if (user) {
-        // console.log(user.id);
         const token = (0, createToken_1.default)({
             userId: user.id,
             role: user.role,

@@ -9,7 +9,7 @@ export default [
     rules: {
       "no-unused-vars": "error",
       "no-undef": "error",
-      "no-console": "warn",
+      "no-console": "error",
       "prefer-const": ["error", { ignoreReadBeforeAssign: true }],
     },
   },
