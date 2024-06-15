@@ -27,7 +27,7 @@ const authGuard = (...roles: UserRole[]) => {
         );
       }
       const { userId, role } = decoded;
-      if (roles && !roles.includes(role)) {
+      if (roles && roles.length > 0 && !roles.includes(role)) {
         throw new AppError(
           " you are not access this resources",
           httpStatus.UNAUTHORIZED
