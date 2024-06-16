@@ -195,7 +195,7 @@ This README file provides comprehensive information about the Car Service Bookin
 
 ## Demo
 
-https://github.com/MuhammadJunaid01/car-wash-booking-system.git
+https://assignment-03-delta-smoky.vercel.app/
 
 ## Installation
 
