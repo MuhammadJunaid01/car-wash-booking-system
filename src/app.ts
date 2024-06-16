@@ -4,7 +4,7 @@ import router from "./app/routes";
 import cookieParser from "cookie-parser";
 import globalErrorHandler from "./lib/middlewares/globalErrorHandelers";
 import { handleNotFound } from "./lib/middlewares/notFoundRoute";
-// mongodb://localhost:27017/assingment-03
+// mongodb://localhost:27017/assingment-035
 const app: Application = express();
 app.use(express.json());
 app.use(cors());
