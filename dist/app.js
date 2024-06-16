@@ -9,7 +9,7 @@ const routes_1 = __importDefault(require("./app/routes"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const globalErrorHandelers_1 = __importDefault(require("./lib/middlewares/globalErrorHandelers"));
 const notFoundRoute_1 = require("./lib/middlewares/notFoundRoute");
-// mongodb://localhost:27017/assingment-03
+// mongodb://localhost:27017/assingment-035
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
