@@ -14,6 +14,16 @@ This README file provides comprehensive information about the Car Service Bookin
   POST /api/auth/signup
 ```
 
+```{
+  "name": "Programming Hero",
+  "email": "web@programming-hero.com",
+  "password": "ph-password",
+  "phone": "1234567890",
+  "role": "admin", //role can be user or admin
+  "address": "123 Main Street, City, Country"
+}
+```
+
 | Parameter  | Type     | Description   |
 | :--------- | :------- | :------------ |
 | `name`     | `string` | **Required**. |
@@ -131,4 +141,19 @@ This README file provides comprehensive information about the Car Service Bookin
 
 ```http
   GET/api/my-bookings
+```
+
+## Demo
+
+https://github.com/MuhammadJunaid01/car-wash-booking-system.git
+
+## Installation
+
+Install Car Wash Booking System with yarn
+
+```bash
+   gti clone https://github.com/MuhammadJunaid01/car-wash-booking-system.git
+   cd car-wash-booking-system
+   yarn
+   yarn dev
 ```
